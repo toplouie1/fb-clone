@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 import Widgets from "./Widgets";
 
 function App() {
-	const user = null;
+	const user = "Nima sherpa";
 
 	return (
 		<div className="app">
