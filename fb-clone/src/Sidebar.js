@@ -23,7 +23,7 @@ function Sidebar() {
 				title="COVID-19 Information Center"
 			/>
 			<SidebarRow Icon={EmojiFlagsIcon} title="Pages" />
-			<SidebarRow Icon={PeopleIcon} tite="Friends" />
+			<SidebarRow Icon={PeopleIcon} title="Friends" />
 			<SidebarRow Icon={ChatIcon} title="Messenger" />
 			<SidebarRow Icon={StorefrontIcon} title="Marketplace" />
 			<SidebarRow Icon={VideoLibraryIcon} title="Videos" />
