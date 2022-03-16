@@ -1,17 +1,9 @@
 import { Button } from "@mui/material";
 import React from "react";
 import "./Login.css";
-import { auth, provider } from "./firebase";
+import { signInWithGoogle } from "./firebase";
 
 function Login() {
-	const signIn = () => {
-		auth
-			.signInWithPopup(provider)
-			.then((result) => {
-				console.log(result);
-			})
-			.catch((error) => alert(error.message));
-	};
 	return (
 		<div className="login">
 			<div className="login__logo">
@@ -24,7 +16,7 @@ function Login() {
 					alt="nnn"
 				/>
 			</div>
-			<Button type="submit" onClick={signIn}>
+			<Button type="submit" onClick={signInWithGoogle}>
 				Sign In
 			</Button>
 		</div>

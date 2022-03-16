@@ -1,4 +1,6 @@
-import firebase from "firebase";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyDy8u6E6RAtAkY936LQaOCJGd7g_EFQMYY",
@@ -10,10 +12,23 @@ const firebaseConfig = {
 	measurementId: "G-KY7DKE7BWN",
 };
 
-const firebaseApp = firebase.initalizeApp(firebaseConfig);
-const db = firebaseApp.firestore();
-const auth = firebase.auth();
-const provider = new firebase.auth.GoogleAuthProvider();
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+const auth = getAuth(app);
 
-export { auth, provider };
-export default db;
+const provider = new GoogleAuthProvider();
+
+export const signInWithGoogle = () => {
+	signInWithPopup(auth, provider)
+		.then((result) => {
+			// const name = result.user.displayName;
+			// localStorage.setItem("name", name);
+			return result.user.displayName;
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+};
+
+// export const nameForEmail = signInWithGoogle();
