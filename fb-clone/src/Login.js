@@ -3,7 +3,7 @@ import React from "react";
 import "./Login.css";
 import { signInWithGoogle } from "./firebase";
 
-function Login() {
+function Login({ login }) {
 	return (
 		<div className="login">
 			<div className="login__logo">
@@ -15,8 +15,15 @@ function Login() {
 					src="https://www.freepnglogos.com/uploads/logo-facebook-png/logo-facebook-facebook-logo-png-transparent-svg-vector-bie-supply-13.png"
 					alt="nnn"
 				/>
+				{/* <h1>{localStorage.getItem("name")}</h1> */}
 			</div>
-			<Button type="submit" onClick={signInWithGoogle}>
+			<Button
+				type="submit"
+				onClick={() => {
+					signInWithGoogle();
+					login();
+				}}
+			>
 				Sign In
 			</Button>
 		</div>

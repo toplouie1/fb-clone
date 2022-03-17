@@ -38,6 +38,7 @@ function MessageSender() {
 					</button>
 				</form>
 			</div>
+
 			<div className="messageSender__bottom">
 				<div className="messageSender__option">
 					<VideocamIcon style={{ color: "red" }} />

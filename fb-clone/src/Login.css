@@ -15,7 +15,7 @@
 }
 .login > div > img {
 	object-fit: contain;
-	height: 150px;
+	height: 130px;
 }
 .login > div {
 	display: flex;

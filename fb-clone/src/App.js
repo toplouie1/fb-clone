@@ -11,10 +11,13 @@ function App() {
 	const [user, setUser] = useState("");
 	// setUser({localStorage.getItem("name")});
 	// setUser(nameForEmail);
+	const login = () => {
+		setUser("Nima");
+	};
 	return (
 		<div className="app">
 			{!user ? (
-				<Login />
+				<Login login={login} />
 			) : (
 				<>
 					<Header />
