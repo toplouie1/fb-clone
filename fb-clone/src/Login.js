@@ -1,9 +1,21 @@
 import { Button } from "@mui/material";
 import React from "react";
 import "./Login.css";
-import { signInWithGoogle } from "./firebase";
+import { signInWithPopup } from "firebase/auth";
+import { auth } from "./firebase";
+import { provider } from "./firebase";
 
 function Login({ login }) {
+	const signInWithGoogle = () => {
+		signInWithPopup(auth, provider)
+			.then((result) => {
+				return result.user.displayName;
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+
 	return (
 		<div className="login">
 			<div className="login__logo">
@@ -15,7 +27,6 @@ function Login({ login }) {
 					src="https://www.freepnglogos.com/uploads/logo-facebook-png/logo-facebook-facebook-logo-png-transparent-svg-vector-bie-supply-13.png"
 					alt="nnn"
 				/>
-				{/* <h1>{localStorage.getItem("name")}</h1> */}
 			</div>
 			<Button
 				type="submit"

@@ -4,30 +4,32 @@ import Header from "./Header";
 import Login from "./Login";
 import Sidebar from "./Sidebar";
 import Widgets from "./Widgets";
-// import { nameForEmail } from "./firebase";
 import { useState } from "react";
+import { LoginProvider } from "./AllState";
 
 function App() {
 	const [user, setUser] = useState("");
 	// setUser({localStorage.getItem("name")});
 	// setUser(nameForEmail);
-	const login = () => {
-		setUser("Nima");
-	};
+	// const login = () => {
+	// 	setUser("Nima");
+	// };
 	return (
 		<div className="app">
-			{!user ? (
-				<Login login={login} />
-			) : (
-				<>
-					<Header />
-					<div className="app__body">
-						<Sidebar />
-						<Feed />
-						<Widgets />
-					</div>
-				</>
-			)}
+			<LoginProvider>
+				{!user ? (
+					<Login />
+				) : (
+					<>
+						<Header />
+						<div className="app__body">
+							<Sidebar />
+							<Feed />
+							<Widgets />
+						</div>
+					</>
+				)}
+			</LoginProvider>
 		</div>
 	);
 }

@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyDy8u6E6RAtAkY936LQaOCJGd7g_EFQMYY",
@@ -15,22 +15,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-
-// const [nameForEmail, setNameForEmail] = useState();
-// import { useState } from "react";
-
-export const signInWithGoogle = () => {
-	signInWithPopup(auth, provider)
-		.then((result) => {
-			// const name = result.user.displayName;
-			// localStorage.setItem("name", name);
-			return result.user.displayName;
-		})
-		.catch((error) => {
-			console.log(error);
-		});
-};
-
-// export const nameForEmail = signInWithGoogle();
+export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider();
