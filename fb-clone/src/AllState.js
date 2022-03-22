@@ -1,13 +1,14 @@
 import { createContext, useState } from "react";
+import { signInWithGoogle } from "./Login";
 
-const LoginState = createContext();
+const LoginContext = createContext();
 
-export const LoginProvider = ({ children }) => {
-	return (
-		<LoginState.Provider value={{ displayName: "Nima sherpa" }}>
-			{children}
-		</LoginState.Provider>
-	);
-};
+// export const LoginProvider = ({ children }) => {
+// 	const [user, setUser] = useState("Nima");
 
-export default LoginState;
+// 	return (
+// 		<LoginContext.Provider value={{ user }}>{children}</LoginContext.Provider>
+// 	);
+// };
+
+export default LoginContext;

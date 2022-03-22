@@ -4,19 +4,15 @@ import Header from "./Header";
 import Login from "./Login";
 import Sidebar from "./Sidebar";
 import Widgets from "./Widgets";
-import { useState } from "react";
-import { LoginProvider } from "./AllState";
+import { useState, createContext } from "react";
+import { signInWithGoogle } from "./Login";
+import LoginContext from "./AllState";
 
 function App() {
-	const [user, setUser] = useState("");
-	// setUser({localStorage.getItem("name")});
-	// setUser(nameForEmail);
-	// const login = () => {
-	// 	setUser("Nima");
-	// };
+	const [user, setUser] = useState(false);
 	return (
 		<div className="app">
-			<LoginProvider>
+			<LoginContext.Provider value={{ user, setUser }}>
 				{!user ? (
 					<Login />
 				) : (
@@ -29,7 +25,7 @@ function App() {
 						</div>
 					</>
 				)}
-			</LoginProvider>
+			</LoginContext.Provider>
 		</div>
 	);
 }

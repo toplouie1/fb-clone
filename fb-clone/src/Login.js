@@ -4,11 +4,18 @@ import "./Login.css";
 import { signInWithPopup } from "firebase/auth";
 import { auth } from "./firebase";
 import { provider } from "./firebase";
+import LoginContext from "./AllState";
+import { useContext } from "react";
+import { useState } from "react";
 
-function Login({ login }) {
+function Login() {
+	const context = useContext(LoginContext);
 	const signInWithGoogle = () => {
 		signInWithPopup(auth, provider)
 			.then((result) => {
+				console.log(result.user.displayName);
+				context.setUser(result.user.displayName);
+
 				return result.user.displayName;
 			})
 			.catch((error) => {
@@ -32,7 +39,6 @@ function Login({ login }) {
 				type="submit"
 				onClick={() => {
 					signInWithGoogle();
-					login();
 				}}
 			>
 				Sign In
